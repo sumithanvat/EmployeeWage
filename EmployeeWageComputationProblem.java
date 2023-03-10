@@ -1,14 +1,20 @@
 package EmployeeWageComputationProblem;
 import java.util.Random;
-public class EmployeeWageComputationProblem {
-    public static void main(String[] args) {
-        System.out.println("Welcome To Employee Wage Computatiom Problem");
-        int wagePerHour = 10; // $10 per hour
-        int workingDaysPerMonth = 20; // 20 working days per month
-        int maxWorkingHours = 100; // maximum working hours for the month
+class Employee {
+    private int wagePerHour;
+    private int workingDaysPerMonth;
+    private int maxWorkingHours;
 
+    public Employee(int wagePerHour, int workingDaysPerMonth, int maxWorkingHours) {
+        this.wagePerHour = wagePerHour;
+        this.workingDaysPerMonth = workingDaysPerMonth;
+        this.maxWorkingHours = maxWorkingHours;
+    }
+
+    public int computeWage() {
         // create a random number generator
         Random random = new Random();
+
         int totalWorkingDays = 0;
         int totalWorkingHours = 0;
         int wage = 0;
@@ -43,6 +49,16 @@ public class EmployeeWageComputationProblem {
             }
         }
 
-        System.out.println("Wage for the month: $" + wage);
+        return wage;
+    }
+
+    public static void main(String[] args) {
+        Employee fullTimeEmployee = new Employee(10, 20, 100);
+        int fullTimeWage = fullTimeEmployee.computeWage();
+        System.out.println("Full-time employee wage for the month: $" + fullTimeWage);
+
+        Employee partTimeEmployee = new Employee(10, 20, 100);
+        int partTimeWage = partTimeEmployee.computeWage();
+        System.out.println("Part-time employee wage for the month: $" + partTimeWage);
     }
 }
